@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('xke', ['ui.select2'])
+angular.module('xke', ['ngRoute', 'ui.select2'])
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.headers.common = {
       'X-Requested-With': 'XMLHttpRequest',
