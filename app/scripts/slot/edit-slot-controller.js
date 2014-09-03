@@ -10,7 +10,7 @@ angular.module('xke')
 
     $scope.slotId = $routeParams.slotId;
 
-    $http.get('/api/user')
+    $http.get('/api/users')
       .success(function (data) {
         $scope.speakers = data;
       })
