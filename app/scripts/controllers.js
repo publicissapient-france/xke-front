@@ -7,14 +7,18 @@ var fondations = ['Craft', 'Mobile', 'Agile', 'Front', 'Back', 'Data', 'Cloud', 
 angular.module('xke')
   .controller('ListSlotCtrl', function ($scope, $http, $location) {
 
-  $scope.slotsJustPlayed = [];
-  $scope.xkeDate = new Date();
+    $scope.slotsJustPlayed = [];
+    $scope.xkeDate = new Date();
 
-  $http.get('/api/slots')
-    .success(function (data) {
-      $scope.slots = data;
-    })
-  ;
+    $http.get('/api/slots', {params: {type: 'in_progress'}})
+      .success(function (data) {
+        $scope.readySlots = data;
+      });
+
+    $http.get('/api/slots', {params: {type: 'idea'}})
+      .success(function (data) {
+        $scope.ideas = data;
+      });
 
   $scope.edit = function (slot) {
     $location.path('/edit/' + slot.id);
@@ -60,15 +64,18 @@ angular.module('xke')
 
   $scope.slot = {type: types[0], fondation: fondations[0], duration: durations[0], pitch: null};
 
-  $http.get('/api/user')
-    .success(function (data) {
-      $scope.speakers = data;
-    })
-  ;
+  $scope.speakers = [{
+    username: 'test speaker'
+  }];
+//  $http.get('/api/user')
+//    .success(function (data) {
+//      $scope.speakers = data;
+//    })
+//  ;
 
   $scope.save = function () {
     $scope.slot.creator = $scope.username;
-    if ($scope.slot.speakers === null) {
+    if (! $scope.slot.speakers) {
       $scope.slot.speakers = [];
     }
     $scope.slot.playedDates = [];

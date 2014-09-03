@@ -20,7 +20,7 @@
             <div class="card-content">
                 <table class="table">
                     <tbody>
-                    <tr ng-repeat="idea in slots.ideas | filter:search | orderBy: predicateIdea:reverseIdea">
+                    <tr ng-repeat="idea in ideas | filter:search | orderBy: predicateIdea:reverseIdea">
                         <td>{{idea.title}}
                             <button class="btn btn-xs btn-success pull-right" data-toggle="modal" data-target="#takeIdeaModal{{idea.id}}">Take it!</button>
                             <div class="modal fade" id="takeIdeaModal{{idea.id}}" tabindex="-1" role="dialog" aria-labelledby="Idea searching for speaker" aria-hidden="true">
@@ -100,7 +100,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="slot in slots.readySlots | filter:search | orderBy: predicateUndone:reverseUndone">
+                <tr ng-repeat="slot in readySlots | filter:search | orderBy: predicateUndone:reverseUndone">
                     <td>
                         <span class="label col-xs-11 label-{{slot.fondation}}">{{slot.fondation}}</span>
                     </td>
