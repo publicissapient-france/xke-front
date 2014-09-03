@@ -1,5 +1,7 @@
+'use strict';
+
 angular.module('xke')
-  .controller('CreateSlotCtrl', function ($scope, $location, $http) {
+  .controller('CreateSlotCtrl', function ($scope, $location, $http, types, durations, fondations) {
     $scope.saving = false;
 
     $scope.types = types;
@@ -40,4 +42,4 @@ angular.module('xke')
         })
       ;
     };
-  })
+  });

@@ -1,5 +1,7 @@
+'use strict';
+
 angular.module('xke')
-  .controller('EditSlotCtrl', function ($scope, $location, $routeParams, $http) {
+  .controller('EditSlotCtrl', function ($scope, $location, $routeParams, $http, types, durations, fondations) {
     var self = this;
 
     $scope.types = types;

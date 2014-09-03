@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('xke')
   .controller('ListSlotCtrl', function ($scope, $http, $location) {
 
