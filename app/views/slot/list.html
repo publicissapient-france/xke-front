@@ -1,0 +1,156 @@
+<div class="row">
+    <div class="card col-md-6">
+        <div class="row">
+            <div class="card-title">
+                Wanna replay some slots?
+            </div>
+            <div class="card-content">
+                Coming soon...
+            </div>
+        </div>
+    </div>
+    <div class="card col-md-5 pull-right">
+        <div class="row">
+            <div class="card-title">
+                <span>Ideas seeking for speaker</span>
+                <a href="#/idea/new" class="btn btn-xebia btn-xs pull-right">
+                    <span class="glyphicon glyphicon-plus-sign"></span> New idea
+                </a>
+            </div>
+            <div class="card-content">
+                <table class="table">
+                    <tbody>
+                    <tr ng-repeat="idea in slots.ideas | filter:search | orderBy: predicateIdea:reverseIdea">
+                        <td>{{idea.title}}
+                            <button class="btn btn-xs btn-success pull-right" data-toggle="modal" data-target="#takeIdeaModal{{idea.id}}">Take it!</button>
+                            <div class="modal fade" id="takeIdeaModal{{idea.id}}" tabindex="-1" role="dialog" aria-labelledby="Idea searching for speaker" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            Do you really want to prepare a slot on this topic?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-link" data-dismiss="modal" aria-hidden="true">No</button>
+                                            <button ng-click="takeIdea(idea)" data-dismiss="modal" aria-hidden="true" class="btn btn-primary">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="modal fade" id="slotsJustPlayedModal" tabindex="-1" role="dialog" aria-labelledby="Slot just played" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>Select the date that the following slots have been played</b>
+                </div>
+                <div class="modal-body">
+                    <input type="date" name="xkeDate" ng-model="xkeDate" placeholder="2013-12-31" required>
+                    <p ng-show="slotsJustPlayed.length">
+                        <ul>
+                            <li ng-repeat="slot in slotsJustPlayed">{{slot.title}}</li>
+                        </ul>
+                    </p>
+                    <p ng-show="!slotsJustPlayed.length">
+                        <i>No slot selected!</i>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <button ng-click="playedAt()" data-dismiss="modal" aria-hidden="true" ng-show="slotsJustPlayed.length" class="btn btn-primary"> Ok</button>
+                    <button data-dismiss="modal" aria-hidden="true" ng-show="!slotsJustPlayed.length" disabled class="btn btn-primary"> Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <span>Ready</span>
+            <a href="#/new" class="btn btn-xebia btn-xs pull-right"><span
+                    class="glyphicon glyphicon-plus-sign"></span> New slot</a>
+        </div>
+        <div class="card-content">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <a href ng-click="predicateUndone = 'fondation'; reverseUndone=!reverseUndone">Fondation</a>
+                    </th>
+                    <th><a href ng-click="predicateUndone = 'title'; reverseUndone=!reverseUndone">Title</a></th>
+                    <th><a href ng-click="predicateUndone = 'speakers'; reverseUndone=!reverseUndone">Speaker</a></th>
+                    <th><a href ng-click="predicateUndone = 'duration'; reverseUndone=!reverseUndone">Duration</a></th>
+                    <th class="slot-type">
+                        <a href ng-click="predicateUndone = 'type'; reverseUndone=!reverseUndone">Type</a>
+                    </th>
+                    <th class="slot-actions">
+                        <a href="#" data-toggle="modal" data-target="#slotsJustPlayedModal" title="Archive selected slots">
+                            <span class="glyphicon glyphicon-download-alt edit-slot pull-right"></span>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="slot in slots.readySlots | filter:search | orderBy: predicateUndone:reverseUndone">
+                    <td>
+                        <span class="label col-xs-11 label-{{slot.fondation}}">{{slot.fondation}}</span>
+                    </td>
+                    <td>{{slot.title}}</td>
+                    <td>{{slot.speakers.join(', ')}}</td>
+                    <td>{{slot.duration}}</td>
+                    <td>{{slot.type}}</td>
+                    <td>
+                        <span class="glyphicon glyphicon-pencil edit-slot" ng-click="edit(slot)"></span>
+                        <input type="checkbox" class="pull-right" ng-click="addOrRemoveSlotToPlayedArray(slot)" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <div class="card-title">
+            Done
+        </div>
+        <div class="card-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        <a href ng-click="predicateUndoneDone = 'fondation'; reverseDone=!reverseDone">Fondation</a>
+                    </th>
+                    <th><a href ng-click="predicateUndoneDone = 'title'; reverseDone=!reverseDone">Title</a></th>
+                    <th><a href ng-click="predicateUndoneDone = 'speakers'; reverseDone=!reverseDone">Speaker</a></th>
+                    <th><a href ng-click="predicateUndoneDone = 'duration'; reverseDone=!reverseDone">Duration</a></th>
+                    <th class="slot-type">
+                        <a href ng-click="predicateUndoneDone = 'type'; reverseDone=!reverseDone">Type</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="slot in slots.alreadyPlayedSlots | filter:search | orderBy: predicateUndoneDone:reverseDone">
+                    <td>
+                        <span class="label col-xs-11 label-{{slot.fondation}}">{{slot.fondation}}</span>
+                    </td>
+                    <td>{{slot.title}}</td>
+                    <td>{{slot.speakers.join(', ')}}</td>
+                    <td>{{slot.duration}}</td>
+                    <td>{{slot.type}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

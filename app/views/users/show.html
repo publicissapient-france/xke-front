@@ -1,0 +1,11 @@
+<h3>{{userInfo.user.username}}</h3>
+
+<h4>{{userInfo.thisYear}} ({{userInfo.slotsThisYear.length}})</h4>
+<ul ng-repeat="slot in userInfo.slotsThisYear" ng-show="slot.playedDates.length">
+    <li class="slot-title">{{slot.title}}</li>
+</ul>
+
+<h4>{{userInfo.thisYear - 1}} ({{userInfo.slotsLastYear.length}})</h4>
+<ul ng-repeat="slot in userInfo.slotsLastYear" ng-show="slot.playedDates.length">
+    <li class="slot-title">{{slot.title}}</li>
+</ul>

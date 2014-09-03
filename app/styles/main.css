@@ -1,79 +1,134 @@
-/* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background-image: url("../images/bg.jpg");
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+ul > .slot-title {
+  list-style-type: square;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.btn-singin,
+.btn-singin:hover {
+  background: #7F4F7F;
+  color: #fff !important;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.btn-xebia,
+.btn-xebia:hover {
+  background: #7F4F7F;
+  color: #fff !important;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
+.slot-actions {
+  width: 50px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.slot-type {
+  width: 80px;
+}
+
+.edit-slot {
+  cursor: pointer;
+}
+
+.form-signin {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+  max-width: 400px;
+  padding: 19px 29px 19px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.navbar-custom {
+  background-color: #4F2F4F;
+  border-color: #4F2F4F;
 }
+
+.navbar-custom .navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  color: #fff;
+  background-color: #4F2F4F;
+  font-weight: bold;
+}
+
+.navbar-custom .navbar-nav > li > a:hover {
+  color: #fff;
+  background-color: #7F4F7F;
+}
+
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #7F4F7F;
+}
+
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #7F4F7F;
+}
+
+.navbar-custom .navbar-nav > li > a .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.navbar-custom .navbar-nav > li > a:hover .caret {
+  color: #fff;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  color: #fff;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.card {
+  background: #fff;
+  margin-bottom: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #7F4F7F;
+}
+.card-title {
+  padding: 5px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #7F4F7F;
+}
+.card-content { padding: 0px 10px 0px 10px; }
+
+.label-Craft { background-color: #27ae60; }
+.label-Mobile { background-color: #2BA9E0; }
+.label-Agile { background-color: #8e44ad; }
+.label-Front { background-color: #e67e22; }
+.label-Back { background-color: #e74c3c; }
+.label-Data { background-color: #2ACADD; }
+.label-Cloud { background-color: #2980b9; }
+.label-DevOps { background-color: #d35400; }
+.label-Divers { background-color: #95a5a6; }
