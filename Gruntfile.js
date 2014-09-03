@@ -72,12 +72,16 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       proxies: [
-        {context: '/api', host: '127.0.0.1', port: 8080}
+        {
+          context: '/api',
+          host: 'xke-test.xebia.eu.cloudbees.net',
+          port: 8080
+        }
       ],
       livereload: {
         options: {
           open: true,
-          middleware: function (connect, options) {
+          middleware: function (connect) {
             var middlewares = [
               connect.static('.tmp'),
               connect().use(

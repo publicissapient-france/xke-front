@@ -10,7 +10,7 @@ angular.module('xke')
   $scope.slotsJustPlayed = [];
   $scope.xkeDate = new Date();
 
-  $http.get('/api/slot')
+  $http.get('/api/slots')
     .success(function (data) {
       $scope.slots = data;
     })
@@ -23,7 +23,7 @@ angular.module('xke')
   $scope.takeIdea = function (idea) {
     var position = $scope.slots.ideas.indexOf(idea);
     idea.speakers.push($scope.username);
-    $http.put('/api/slot/' + idea.id, idea)
+    $http.put('/api/slots/' + idea.id, idea)
       .success(function (slot) {
         $scope.slots.ideas.splice(position, 1);
         $scope.slots.readySlots.push(slot);
@@ -43,7 +43,7 @@ angular.module('xke')
   $scope.playedAt = function() {
     $scope.slotsJustPlayed.forEach(function (slot) {
       slot.playedDates.push($scope.xkeDate);
-      $http.put('/api/slot/' + slot.id, slot);
+      $http.put('/api/slots/' + slot.id, slot);
     });
     // Message d'erreur et de succès ?
     $scope.slotsJustPlayed = [];
@@ -74,7 +74,7 @@ angular.module('xke')
     $scope.slot.playedDates = [];
     $scope.saving = true;
     // TODO 1 : appeler un service qui va enregistrer le slot
-    $http.post('/api/slot', $scope.slot)
+    $http.post('/api/slots', $scope.slot)
       .success(function () {
         $scope.saving = false;
         $location.path('/');
@@ -100,7 +100,7 @@ angular.module('xke')
     })
   ;
 
-  $http.get('/api/slot/' + $routeParams.slotId)
+  $http.get('/api/slots/' + $routeParams.slotId)
     .success(function (data) {
       $scope.slot = data;
     })
@@ -112,7 +112,7 @@ angular.module('xke')
 
   $scope.destroy = function () {
     // TODO 1 : appeler un service qui va supprimer le slot
-    $http.delete('/api/slot/' + $routeParams.slotId)
+    $http.delete('/api/slots/' + $routeParams.slotId)
       .success(function () {
         $location.path('/');
       })
@@ -121,7 +121,7 @@ angular.module('xke')
 
   $scope.transformIntoIdea = function() {
     $scope.slot.speakers = [];
-    $http.put('/api/slot/' + $scope.slot.id, $scope.slot)
+    $http.put('/api/slots/' + $scope.slot.id, $scope.slot)
       .success(function () {
         $location.path('/');
       })
@@ -131,7 +131,7 @@ angular.module('xke')
   $scope.save = function () {
     // TODO 1 : appeler un service qui va mettre-à-jour le slot
     $scope.slot.title = $scope.slot.title.replace(/"/g, '\\\"');
-    $http.put('/api/slot/' + $scope.slot.id, $scope.slot)
+    $http.put('/api/slots/' + $scope.slot.id, $scope.slot)
       .success(function () {
         $location.path('/');
       })
